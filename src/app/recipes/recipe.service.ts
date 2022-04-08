@@ -8,35 +8,36 @@ import { Recipe } from "./recipe.model";
 export class RecipeService{
     recipesChanged = new Subject<Recipe[]>();
 
-    private recipes: Recipe[] = [
-        new Recipe('Tasty Schintzel',
-         'A super-tasty Schintzel - just awesome!', 
-         'https://cdn.pixabay.com/photo/2019/03/25/20/20/schnitzel-4081269_960_720.jpg',
-         [
-             new Ingredient("Meat", 1),
-             new Ingredient("French Fries", 20)
-         ]
-        ),
-        new Recipe(
-            'Big Fat Burger',  
-            'What else you need to say!', 
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlHDr-z8Jf7lr2Mlqn9Vm1A6Ny3pCfy1O1Ag&usqp=CAU', 
-            [
-                new Ingredient("Buns", 2),
-                new Ingredient("Meat", 1)
-            ]
-        ),
-        new Recipe(
-            'Cheesy Pizza',  
-            'What else you need to say!', 
-            'https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395__480.jpg', 
-            [
-                new Ingredient("Pizza Bread", 25),
-                new Ingredient("Mushrooms", 19)
-            ]
-        )
-    ];
+    // private recipes: Recipe[] = [
+    //     new Recipe('Tasty Schintzel',
+    //      'A super-tasty Schintzel - just awesome!', 
+    //      'https://cdn.pixabay.com/photo/2019/03/25/20/20/schnitzel-4081269_960_720.jpg',
+    //      [
+    //          new Ingredient("Meat", 1),
+    //          new Ingredient("French Fries", 20)
+    //      ]
+    //     ),
+    //     new Recipe(
+    //         'Big Fat Burger',  
+    //         'What else you need to say!', 
+    //         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlHDr-z8Jf7lr2Mlqn9Vm1A6Ny3pCfy1O1Ag&usqp=CAU', 
+    //         [
+    //             new Ingredient("Buns", 2),
+    //             new Ingredient("Meat", 1)
+    //         ]
+    //     ),
+    //     new Recipe(
+    //         'Cheesy Pizza',  
+    //         'What else you need to say!', 
+    //         'https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395__480.jpg', 
+    //         [
+    //             new Ingredient("Pizza Bread", 25),
+    //             new Ingredient("Mushrooms", 19)
+    //         ]
+    //     )
+    // ];
 
+    private recipes: Recipe[] = [];
     constructor(private slService: ShoppingListService){}
     
     setRecipes(recipes: Recipe[]){
