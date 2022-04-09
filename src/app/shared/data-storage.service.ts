@@ -19,12 +19,7 @@ export class DataStorageService {
     }
 
     fetchRecipes() {
-        return this.authService.user.pipe(take(1), exhaustMap(user => {
-                const token = user.token;
-                return this.http.get<Recipe[]>('https://receipe-book-3f084-default-rtdb.firebaseio.com/recipes.json',{
-                    params: new HttpParams().set('auth', token)
-                })
-            }),
+        return this.http.get<Recipe[]>('https://receipe-book-3f084-default-rtdb.firebaseio.com/recipes.json').pipe(
             map(recipes => {
                 return recipes.map(recipe => {
                     return { ...recipe, ingredients: recipe.ingredients ? recipe.ingredients : [] };
@@ -32,8 +27,25 @@ export class DataStorageService {
             }),
             tap(recipes => {
                 this.recipeService.setRecipes(recipes);
-            })
-        )
-           
+            }))
     }
+
+    // fetchRecipes() {
+    //     return this.authService.user.pipe(take(1), exhaustMap(user => {
+    //             const token = user.token;
+    //             return this.http.get<Recipe[]>('https://receipe-book-3f084-default-rtdb.firebaseio.com/recipes.json',{
+    //                 params: new HttpParams().set('auth', token)
+    //             })
+    //         }),
+    //         map(recipes => {
+    //             return recipes.map(recipe => {
+    //                 return { ...recipe, ingredients: recipe.ingredients ? recipe.ingredients : [] };
+    //             });
+    //         }),
+    //         tap(recipes => {
+    //             this.recipeService.setRecipes(recipes);
+    //         })
+    //     )
+
+    // }
 }
