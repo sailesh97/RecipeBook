@@ -55,6 +55,9 @@ import { PlaceholderDirective } from './shared/placeholder/placeholder.directive
       provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AlertComponent // Not needed for Angular 11+
+  ]
 })
 export class AppModule { }
