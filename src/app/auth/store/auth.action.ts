@@ -1,6 +1,6 @@
 import { Action  } from '@ngrx/store';
 
-export const LOGIN ='LOGIN';
+export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 
 export class LogIn implements Action{
